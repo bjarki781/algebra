@@ -1,0 +1,552 @@
+\documentclass[a4paper, 14pt]{article}
+
+\usepackage[margin=1in]{geometry}
+
+\usepackage[skip=0.1in]{parskip}
+\usepackage[sfdefault]{GoSans}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{enumitem}
+
+\usepackage[icelandic]{babel}
+ \usepackage[T1]{fontenc}
+
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{float}
+\usepackage{mathtools}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{dcolumn}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{appendix}
+\usepackage{booktabs}
+\usepackage{tabu}
+\usepackage{cancel}
+\usepackage{xparse}
+\usepackage{tikz-cd}
+
+\usepackage{pgfplots}
+\pgfplotsset{width=0.76\textwidth, height=6cm, compat=1.9}
+
+\usepackage{xcolor}
+\usepackage{listings}
+
+\usepackage{sectsty}
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\usepackage{csquotes}
+\usepackage[backend=biber, citestyle=alphabetic, style=alphabetic]{biblatex}
+\addbibresource{refs.bib}
+
+\DeclareMathOperator{\atan}{atan}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\V}{V}
+\DeclareMathOperator{\I}{I}
+\DeclareMathOperator{\D}{D}
+\DeclareMathOperator{\Ass}{Ass}
+\DeclareMathOperator{\Mor}{Mor}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\Min}{Min}
+\DeclareMathOperator{\MaxSpec}{Max\, Spec}
+\DeclareMathOperator{\Quot}{Quot}
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Cone}{Cone}
+
+\newtheorem{theorem}{Setning}
+\newtheorem{proposition}{Fullyrðing}
+\newtheorem{example}{Dæmi}
+\newtheorem{corollary}{Fylgisetning}
+\newtheorem{lemma}{Lemma}
+
+\let\surfun\twoheadrightarrow
+\let\infun\hookrightarrow
+\newcommand{\ru}{\noindent\rule{\textwidth}{0.4pt}}
+\let\tensor\otimes
+\let\dsum\oplus
+\NewDocumentCommand{\xs}{O{x} O{n}}{#1_1, \dots, #1_#2}
+\newcommand{\vx}{\boldsymbol{x}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\then}{\Longrightarrow}
+\newcommand{\ergo}{$\Longrightarrow$}
+\newcommand{\m}{\mathfrak{m}}
+\renewcommand{\P}{\mathcal{P}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+
+\DeclarePairedDelimiter{\nint}{\lfloor}{\rceil}
+
+\binoppenalty=\maxdimen
+\relpenalty=\maxdimen
+
+
+\usepackage{hyperref}
+\usepackage{subfiles}
+
+\title{Algebra I nótur}
+\date{Vetrarönn 2022}
+
+\begin{document}
+\maketitle
+
+
+\section{Algebra}
+
+Látum $R$ vera baug og $I \leq R$ vera íðal. Rótaríðal $I$, táknað $\sqrt{I}$, er íðal staka sem lenda í $I$ þegar þau eru sett í nógu hátt veldi.
+$$
+    \sqrt{I} = \{ r \in R \mid r^n \in I, n \in \N \}.
+$$
+Einn eiginleiki rótaríðala er að þau eru sniðmengi lágíðala $R/I$.
+\[
+    \sqrt{I} = \bigcap \Min(R/I) = \bigcap \Ass(R/I) ?
+\]
+og sértilfelli af þessu er
+\[
+    \sqrt{0} = \bigcap \Min(R) = \bigcap \Spec(R)
+\]
+Athugið að $\sqrt{0}$ er mengi núllvalda staka $R$.
+
+\ru
+
+Látum $M$ vera $R$-mótul. Eyðir (e. annihilator) $S$ er íðal í $R$ hvers stök eru núlldeilar staka $S$. Eyðir $S$ er táknaður $\Ann_R(S) = \{ r \in R \mid s \in S \then rs = 0 \}$. Athugum að $0 \in \Ann_R(S)$ fyrir öll $S$. Tengt frumíðöl $M$ í $R$ eru frumíðöl í $R$ sem 
+eyða hlutmótlum í $M$. Mengi tengdra frumíðala er táknað $\Ass_R(M) = \{ P \in \Spec(R) \mid N \leq M \then PN = 0 \}.$
+Það er líka hægt að segja þetta fram með 
+$P \in \Ass_R(M) \iff \exists R/P \infun M$ eða $\exists m \in M, \Ann_R(m) = P$.
+
+\ru
+
+Núlldeilir í baugnum $R$ er stak $r \in R \setminus \{ 0 \} $ þ.a. $\exists t \in R \setminus \{ 0 \}$ svo $rt = 0$.
+Eins tölum við um núlldeila fyrir $R$-mótulinn sem stak $r \in R \setminus \{ 0 \} $ þ.a. $\exists m \in M \setminus \{ 0 \}$ svo $rm = 0$.
+
+$$
+    \{ \text{núlldeilar í } M \} \cup \{ 0 \} = \bigcup \Ass(M)
+$$
+
+$$
+    \sqrt{0_R} = \{ \text{núllvalda stök } R \} = \bigcap \Spec(R) = \bigcap \Min(R) = \bigcap \Ass(R)
+$$
+
+Einfaldur mótull eða höfuðmótull (e. simple module) er mótull sem á enga aðra hlutmótla fyrir utan sig og núllmótulinn.
+Önnur skilgreining á höfuðmótlum er að það er mótull  sem er spannaður af hverju ekki-núll staki $M^*$ sínu.
+Höfuðmótlar eru því spannaðir af einu staki, líkt og höfuðíðöl.
+Þá er til mótun $R \surfun M$. Ef við
+deilum með kjarna þessarar mótunar fáum við $R/I \xrightarrow{\sim} M$. Höfuðmótlar er alltaf einsmóta $R/I$ þar sem $I$ er kjarni varpanarinnar. Ef deilibaugurinn $R/I$ er svið þá $I \in \MaxSpec(R)$. Þar sem $M$ á sér aðeins einn
+hlutmótul, nefnilega $(0)$, þá á $R/I$ sér aðeins eitt íðal, $(0)$, og er þá svið
+
+Tökum þetta saman og fáum að $M$ er höfuðmótull ef og aðeins ef $M \cong R/\mathfrak{m}$ þar sem $\mathfrak{m} \in \MaxSpec(R)$.
+
+Háíðöl í $\C[x]$ eru alltaf á forminu $\mathfrak{m}_c = (x-c)$, þ.e. punktar.
+
+\subsection{Turnar/síarnir}
+Turn af hlutmótlum í $R$-mótlinum $M$ er endanleg fallandi runa $M_0 \supset M_1 \supset \cdots \supset M_k$. 
+Þægir turnar (e. nice filtrations) eru turnar sem hafa deildamótla á forminu $M_i/M_{i+1} \cong R/P_i$. Eftirfarandi turn er þægur:
+$$
+    M_0 = M = \C / (x^3, y^2) \supset \cdots \supset \C / (y) \supset 0 = M_k.
+$$
+Ef $R$ er noetherískur og $M$ er endanlega spannaður þá er alltaf til þægur turn í $M$.
+
+\ru
+
+Turn kallast \emph{Jordan-Hölder turn} (e. \emph{composition series}) ef allir deildarmótlar aðliggjandi hlutmótla
+eru einfaldir mótlar.
+
+Lengd stysta Jordan-Hölder-turnsins í $M$ táknum við $\ell(M)$. $\ell(M) \in \N \cup \{ \infty \}$.
+Nokkrir eiginleikar $\ell(m)$ 
+\begin{enumerate}
+  \item $\ell(M)$ er strangt stækkandi (e. \emph{strictly monotonically increasing}). Það er,
+  ef $N \subset M$ þá  $\ell(N) < \ell(M)$.
+  \item Lengd hverrar síunnar í $M$ getur mest verið $\ell(M)$
+  \item Ef $0 \to M' \to M \to M'' \to 0$ er fleyguð þá $\ell(M) = \ell(M') + \ell(M'')$.
+  \item Síun er Jordan-Hölder-turn þþaa lengd síunnarinnar er $\ell(M)$.
+\end{enumerate}
+R-mótull $M$ er bæði artinískur og noetherískur þá og því aðeins að $\ell(M) < \infty$.
+
+\subsection{Noetherískir og artinískir mótlar}
+Mótullinn $M$ er noetherískur, þ.e. Noether-mótull þ.þ.a.a.\ hver stækkandi runa hlutmótla hans stansar.
+Þetta er kallað stækkandi runuskilyrðið (e. ascending chain condition, ACC).
+Mótullinn $M$ er artinískur, þ.e. Artin-mótull þ.þ.a.a. hver minnkandi runa hlutmótla hans stansar. 
+Þetta er kallað minnkandi runuskilyrðið (e. descending chain condition, DCC).
+Hugtökin artinísk og noetherísk eru samhverf fyrir mótla (ekki fyrir bauga).
+Dæmi um noetherískan $\Z$-mótul er $Z$. 
+
+Ef $M$ er noetherískur þá eru allir hlutmótlar $M$ eru endanlega spannaðir. Einnig er $M$ noetherískur 
+þ.þ.a.a.\ hvert $K \leq M$ og $M/K$ eru noetherískir. og allir hlutmótlar allra endanlega spannaðra $R$-mótla eru 
+einning endanlega spannaðir.
+
+\subsection{Noetherískir og artinískir baugar}
+Nokkrir eiginleikar artnískra og noetherískra bauga.
+\begin{itemize}
+\item Baugur er noetherískur/artinískur ef hann er noetherískur/artinískur
+sem mótull. 
+\item (Hilbert's basis theorem) Ef $R$ er noetherískur þá er $R[x]$ noetherískur (og þ.a.l einnig $R[x_i, \dots, x_n]$).
+$R$ er Artin-baugur $\iff \ell(R) < \infty \iff \MaxSpec(R) = \Spec(R)$ og $R$ er noetherískur ($|\Spec(R)| < \infty$).
+
+\item $\MaxSpec(R) = \Spec(R) \iff \dim(R) = 0 \; $(R er þá svið).
+
+\item $\dim(R) = \sup \{ \ell(P) \mid P \in \Spec(R) \}$.
+Athugið að baugur $R$ getur ekki átt sér vídd líkt og vigursvið en hér merkir
+$\dim(R)$ \emph{Krull-vídd} $R$.
+
+\item $\ell_R(R) < \infty \then$ DCC og ACC.
+
+\item $P \in \Supp(R/I)$ þ.þ.a.a.\ $P \supset I$, $P$ er frumíðal.
+
+\item Öll íðöl $I \leq R$ noetherískur er hægt að skrifa sem endanlegt sniðmengi frumíðala.
+$I = P_1 \cap \cdots \cap P_n$. Fjölskyldan $\{ P_i \}_I$ þarf ekki að vera einstök.
+Til dæmis $I = (x^2, xy)$. $I = (x, y^2) = (x) \cap (x^2, xy, y^2).$
+SKILJA DÆMIÐ!!!
+
+\end{itemize}
+
+Íðal $I = Q_1 \cap \dots \cap Q_n$ kallast óþættanlegt ef og aðeins ef 
+$I \subset Q_1 \cap \dots \cap \, \cancel{Q_i} \, \cap \cdots Q_n$ og $i \neq j \then \sqrt{Q_i} \neq \sqrt{Q_j}$.
+
+Íðal $I = Q_1 \cap \dots \cap Q_n$ er endanleg þáttun. Þá $\{ \sqrt{Q_1}, \dots, \sqrt{Q_n} \} = \Ass(R/I).$
+
+$\Ass(R/I) \subseteq \Min(R/I)$.
+Ef $I = Q_1 \cap \dots \cap Q_n$ og $\sqrt{Q_i} \in \Min(R/I)$ þá
+er þátturinn $Q_i$ einstakt ákvarðaður (hann er alltaf þáttur í öllum
+þáttunum á $I$).
+
+Baugurinn $R$ er noetherískur þá og því aðeins að allir endanlega spannaðir $R$-mótlar eru noetherískir.
+
+$R$ noetherískur $\then$ Öll íðöl $R$ eru endanlega spönnuð.
+$\then$  $R/I$ er noetherískur
+$\then$  $S^{-1}R$ er noetherískur (sér í lagi $R_P$ og $R_f$, og þ.a.l. $M_P$ og $M_f$).
+
+\end{itemize}
+
+\subsection{Lágfrumíðöl}
+Lágfrumíðal $R$ er íðal $R$ sem er hlutmengi allra íðala sem skarast á við það. Við táknum
+lágfrumíðul baugsins $R$ sem $\Min(R)$. Þetta getum við skrifað með táknum
+\[
+    \Min(R) = \{ P \in \Spec(R) \mid  \nexists Q \in \Spec(R), 0 \subset Q \subset P \}.
+\]
+Ef við skoðum sérstaklega hvernig deilibaugar haga sér höfum við eftirfarandi jöfnu
+\[
+    \Min(R/I) = \{ P \in \Spec(R) \mid \nexists Q \in \Spec(R), P \supset Q \supset I.
+\]
+
+\subsection{Staðbinding}
+Eins og nafnið gefur til kynna er staðbinding (e. localization) leið til þess að staðbinda mótla.
+Staðbundinn mótull $M$ á sér aðeins eitt einstakt háíðal $m$ og hann er oft tengur háíðalinu sínu
+í rithætti og skrifaður $(M, m)$. Ef við tökum baug $R$ og frumíðal $P \leq R$ getum við staðbundið
+$R$ sem mótul. Þ.e. $R$ og $P$ verður $(R_P, PR_P)$.
+Deildarbaugur baugs og háíðals hans er svið. Við táknum þetta svið sem staðbindingin m.t.t.\ $P$ og háíðal þess mynda
+\[
+    K(P) : = \Quot R/P = R_P/PR_P
+\]
+
+$$
+\Supp(M) = \{ P \in \Spec(R) \mid M_P \neq 0 \} 
+$$
+Staðbinding er fleygaður varpi (e. exact functor).
+
+\subsection{Frymin íðöl (e. primary ideals)}
+Baugurinn $R$ er noetherískur. $Q \leq R$, $Q$ er frymið $\iff \sqrt{0_{R/Q}} = \text{núllvalda stök } R/Q$.
+Aukasetning: $Q$ er frumíðal $\then$ $Q$ er frymið.
+
+$ab \in Q \then a,b \in \sqrt{Q}$
+
+$Q$ er frymið $\then$ $\sqrt{Q}$ er frumíðal.
+
+$Q$ er frymið og $P = \sqrt{Q} \then $ $Q$ kallast $P$-frymið
+
+\begin{lemma}
+$\m \in \MaxSpec(R), \m = \sqrt{Q} \then Q$ er frymið.
+\end{lemma}
+\begin{proof}
+Skoðum $Q$ í $R/Q$. Þá er $Q = \{ 0 \}$ og $\sqrt{Q} = \sqrt{0}$. Við vitum
+að við getum skrifað mengi núllvalda staka baugs sem sniðmengi allra frumíðala baugsins.
+Þar sem $\m$ er háíðal sjáum við að það verður að vera jafn yfiríðölum sínum, þ.e. jafnt
+öllum frumíðölunum. Mengi núlldeila er sammengið $\bigcup \Ass(R/Q)$, $\Ass(R/Q)$ verandi 
+frumíðöl jöfn $\m$ sjáum við að mengi núlldeila er einnig sama og $\m$. Þar með höfum við
+fyrir bauginn $R/Q$ að mengi núlldeila og núllvalda staka er eitt og hið sama.
+
+\emph{Mætti passa upp á munin á íðölum í deiliíðalinu og R}
+
+\end{proof}
+
+Öll $\cap$-óþáttanleg íðöl eru frymin.
+
+\subsection{Þinmargfeldi}
+Þinmargfeldi tveggja strúktura er strúktúr sem einangrar þann eiginleika sem
+tvíliða föll úr þessum tveimur strúkturum eiga.
+Þinmargfelgi tvegga mótla er best að skilgreina sem með allsherjareiginleikanum. 
+
+\begin{center}
+\begin{tikzcd}
+        & M \tensor N \arrow[dd, dotted] \\
+    M \times N \arrow[ru] \arrow[rd]  &   \\
+        & P \\     
+\end{tikzcd}
+\end{center}
+
+Hér eru nokkrar reiknireglur.
+\[
+    R \tensor_R M = M
+\]
+\[
+    R^m \tensor_R S = S^m
+\]
+\[
+    R/I \tensor_R R/J = R/(I + J)
+\]
+\[
+    R/I \tensor_R M = M/MI
+\]
+Ef $M$ er flatur þá
+\[
+M \tensor_R I = MI.
+\]
+\[
+    M/IM \tensor_{R/I} N/IN = M \tensor_R N \tensor_R R/I
+\]
+
+Ef mótull $M$ er flatur mótull þá er $ \tensor_R M$ fleygaður varpi.
+
+\section{Heillegar baugsvíkkarnir}
+Látum $A \leq B$ vera bauga. Köllum stak $b \in B$ heillegt yfir $A$ ef og aðeins ef til er
+fjölskylda staka úr $A$, $\{ a_i \}_N, a_0 = 1$ sem uppfyllir eftirfarandi jöfnu
+\[
+    b^n a_0 + b^{n-1} a_1 + \cdots + ba_{n-1} + a_n = 0.
+\]
+M.ö.o. er $b$ rót fyrir margliðu (í einni breytu, $x$) með stuðlum úr $A$.
+\begin{itemize}[label=$\iff$]
+\item $b$ er heilleg yfir $A$.
+\item $A \subseteq A[b] \subseteq B$. Hér er $A[b]$ endanlega spönnuð $A$-algebra sem er einnig endanlega spönnuð sem $A$-mótull (sterkara en að vera bara e.s. $A$-algebra).  
+\item $\exists$ endanleg $A$-algebra $C$: $A \subseteq A[b] \subseteq C \subseteq B$.
+\item $\exists$ (e.s.) $A[b]$-mótull $M$ sem er e.s. sem $A$-mótull og $\Ann_{A[b]}(M) = 0$.
+\end{itemize}
+
+Látum $f: A \to B$ vera baugsmótun. Þessi mótun gefur okkur skilgreiningu á $B$ sem $A$-algebru.
+Við segjum að $f$ sé \emph{endanleg} eff $B$ er heilleg $A$-algebra, þ.e. $\forall b \in B$, $b$ er heillegt yfir $f(A)$. 
+Tvö áhugaverð tilfelli.
+\begin{enumerate}
+\item $f: A \twoheadrightarrow B$: $f$ er sjálfkrafa endanleg þar sem $b$ er alltaf heillegt yfir $B$.
+\item $f: A \hookrightarrow B$: aftur endanleg því þá er $F=\Spec(f) : \Spec(B) \to \Spec(A)$ átæk (Going-up theorem).
+    $F: Q \mapsto f^{-1}(Q)$ 
+\end{enumerate}
+
+\begin{theorem}
+Lát $A$ vera heilbaug og $\Quot A \hookrightarrow L = \text{endanleg sviðsvíkkun}$.
+Lát einnig $B = \overline{A}^{(L)} = \{ l \in L \mid l \text{ er heillegt yfir } A \}$.
+Þá er $B$ e.s. $A$-algebra, þar af leiðandi er $B$ e.s. $A$-mótull, það er $A \to B$ er endanleg.
+\end{theorem}
+
+\begin{theorem}[Noether stöðlun I]
+ Lát $k$ vera svið og $A$ vera e.s. $k$-algebru, það er $\exists k[\xs] \twoheadrightarrow A.$
+Þá er til línuleg samantekt $\{ y_i \}$, það er $y_i \in \Span_k(\xs[x][d]), d \leq n$ þannig að 
+\begin{enumerate}
+\item $\xs[y][d]$ eru línulega sjálfvalda (?).
+\item  $k[\xs] \supseteq k[\xs[y][d]] \overset{\phi}{\twoheadrightarrow} A$, $\phi$ er eintæk og endanleg (?).
+\end{enumerate}
+\end{theorem}
+
+\subsection{Núllstöðusetning Hilberts}
+
+\subsubsection{Svala útgáfan}
+\begin{theorem}[Undirbúningssetning Weierstraß]
+Látum $k$ vera óendanlegt svið. $f \in x[\xs]$. Það er til línuleg breyting í hnitum 
+$\psi: x_i \mapsto x_i + a_ix_n$ með $\psi(f) = (\text{fasti} \neq 0) \cdot x_n^N + \sum_{i=0}^{N-1} c_i (\xs[x][n-1])
+\cdot x_n^i$.
+\end{theorem}
+
+\begin{theorem}[Noether stöðlun]
+Látum $k$ vera óendanlegt svið. Ef $k[\xs] \surfun A$ er endanlega spönnuð $k$-algebra þá er til $\xs[y][d]
+\in \Span(\xs)$ þannig að $k[{\xs[y][d]}] \infun A$ er heilleg $k$-algebra.
+\end{theorem}
+
+\begin{corollary}[Svala útgafa núllstöðusetningar Hilberts]
+Látum $k$ vera svið og $A$ vera endanlega spannaða $k$-algebra sem er líka svið. Þá er $A|k$ endanleg sviðsútvíkkun, 
+þ.e. $[A : k] < \infty$.
+\end{corollary}
+
+\subsubsection{Venjulega útgáfan}
+\begin{enumerate}
+\item $k$ er svið, $k \hookrightarrow A$ er e.s. $k$-algebra, $A$ er svið $\then$ $k \hookrightarrow A$ er endanleg
+þ.e. $A$ er endanleg sviðsvíkkun $k$. Ef $k = \overline{k}$ þá $A = k$.
+\item Lát $k = \overline{k}.$ Ef $\m \in k[\xs]$ er háíðal \ergo $\exists c = (c_1, 
+\dots, c_n) \in k^n: \m = \m_c := (x_1 - c_1, \dots, x_n - c_n)$.
+\item $J \subseteq k[\xs], V(J) = \emptyset\then J = (1).$
+\item $J \subseteq k[\xs] \then I(V(J)) = \sqrt{J}.$
+\end{enumerate}
+
+\subsection{Varpmótlar}
+$R$-Mótull $P$ er varpmótull (e. projective module) ef og aðeins ef $\Hom_R(P, \bullet)$ er fleygaður varpi,
+þ.e. varpi sem varðveitir fleygaðar lestir. Við vitum nú þegar að þessi varpi er alment fleygaður frá vinstri
+(varðveitir eintækni) en varpmótulsskilyrðið tryggir að hann sé þá einnig fleygaður frá hægri,
+þ.e. varðveitir átækni þ.e. $M \twoheadrightarrow N \then \Hom_R(P, M) \twoheadrightarrow \Hom_R(P,N).$ 
+
+\begin{enumerate}
+\item $P$ er varpmótull.
+\item $\Hom_R(P, \bullet)$ er fleygaður mótull.
+\item $P \twoheadrightarrow M$ klofnar, þ.e. $0 \to K \to M \twoheadrightarrow P \to 0$ klofnar, þ.e. $f$ á sér section.
+\item $P$ er liður í beinni summu frjáls mótuls.
+\end{enumerate}
+
+Frjáls mótull => varpmótull => flatur mótull
+
+$J = (2, 1 + \sqrt{5})$ er ekki frjáls mótull þar sem það er ekki höfuðíðal (frjálsir mótlar eru höfuðíðöl).
+$J$ er aftur á móti varpmótull þar sem $J \dsum M = R^I $. (Finna $M$ með reiknivél)
+
+$R$-mótull $M$ er flatur ef og aðeins ef $\bullet \tensor_R M$ er fleygaður varpi.
+
+\section{Samsvipir og samtoganir}
+
+Keðjufléttingum svipar mjög til fleygaðra lesta en eru aðeins almennari og þeim fylgir líka öðruvísi ritháttur.
+Keðjuflétting er parið $M_\bullet=(A_\bullet, d_\bullet)$ þar sem $A_\bullet$ er runa abelískra grúpa eða mótla (eða en almennra, hlutir í 
+abelísku ríki). Við skrifum $Z_i := \Ker d_i \subseteq A_i$ ($Z$ stendur fyrir \emph{Zyrkel}) og $B_i := \Im d_{i+1} \subseteq A_i$ 
+($B$ stendur fyrir \emph{Boundary}). 
+Einnig er sett það skilyrði á keðjufléttingar að $d_{i+1} \circ d_i = 0$, þ.e. $B_i \subseteq Z_i$ en ef við litum á 
+fleygaða lest sem keðjufléttingu hefðum við að $B_i = Z_i$.
+
+$i$-ti samsvipur keðjulestarinnar $M_\bullet$ er skilgreindur sem $H_i(M_\bullet) = Z_i / B_i$. Fyrir fleygaðar lestir 
+sjáum við að $H_i = 0$ fyrir öll $i$.
+
+Fleygaðar lestir $\subset$ Keðjufléttingar $\subset$ Lestir/Fléttingar.
+
+\subsection{Samtogun, e. homotopy}
+Í grannfræði er samtogun milli falla $f : X \to Y$ og $g : X \to Y$ samfelld tvílínuleg vörpun 
+$H : [0, 1] \times X \to Y$ með  $H(0, x) = f(x)$ og $H(1, x) = g(x)$. 
+Í okkar skilningi er samtogun keðjuvörpun () $h : M_\bullet \to N_\bullet[-1]$, $h_i: M_i \to M_{i+i}$
+ef og aðeins ef $f_i = d^M h + h d^M = d^N h + h d^N$. Það að til sé samtogun á milli $f$ og 0 er skrifað 
+$f \sim 0$.
+Við fáum svo að $f \sim 0 \then H(f) = 0.$ 
+$f \sim g \iff f-g \sim 0$
+$f-g = hd + dh$
+Lemma: $H_i(f) = H_i(g)$.
+
+\subsection{Togjafngildi, e. homotopy equivalence}
+Keðjuvörpun $f_\bullet: M_\bullet \to N_\bullet$ kallast togjafngildi ef til er $g: N_\bullet \to M_\bullet $ þannig að
+$f \circ g \sim \id_{N_\bullet}$ og $g \circ f \sim \id_{M_\bullet}$ 
+
+
+\subsection{Vörpunarkeila}
+Látum $A_\bullet$ vera keðjufléttingu. Vörpun $f: A_\bullet \to B_\bullet$ kallast \emph{næstum einsmóta}
+(e. quasi-isomorphic, qui eða qis) ef fyrir öll $i$ er $H_i(f)$ einsmótun.
+Lát $f: L \to M$ vera keðjuvörpun. $\Cone f_i := L_i \oplus M_{i-1}$
+$\Cone f_{i-1} := L_{i-1} \oplus M_{i-2}$
+
+virkinn hagar sér eins og fylkjamargföldun
+\[
+\begin{pmatrix}
+d & 0 \\
+f & -d_m \\
+\end{pmatrix}
+\begin{pmatrix}
+x \\
+y 
+\end{pmatrix}
+=
+\begin{pmatrix}
+dx \\
+fx - dmy
+\end{pmatrix}
+
+\]
+
+\subsection{Keðjufléttingur}
+$x \in H_i = Z_i/B_i$,
+$H_i(f)(x) := f(x)$.
+
+\section{Ríkjafræði}
+
+\subsection{Aðoka varpi}
+Gefum okkur varpa $F: C \rightarrow D$, $G: D \rightarrow C$.
+Ef $\Mor(FX, Y) = \Mor(X, GY)$ þá segjum við að $F$ sé aðoka (varpanum $G$)
+frá vinstri og að $G$ sé aðoka (varpanum $F$) frá hægri.
+
+Varpi $F$ sem er aðoka frá hægri er einnig fleygaður frá hægri. 
+Lestin
+$$
+    X \rightarrow Y \rightarrow Z \rightarrow 0
+$$
+er fleyguð og þar af leiðandi er lestin
+$$
+    FX \to FY \to FZ \to 0
+$$
+einnig fleyguð.
+
+\subsection{Samlagningarvarpar og abelísk ríki}
+$F: C \to D$, $C$ og $D$ verandi forsamlagningargrúpur, er samlagningarvarpi ef og aðeins ef hann er grúpumótun á $\Hom$ mengjum $C$.
+
+$F: 0 \mapsto 0$
+Tenging við vörpunarkeilur
+
+\[
+    \begin{tikzcd}
+    L_i \arrow{r}{f} \arrow{d}{\pi} & M_i \arrow{d}{d} \\
+    L_{i-1} \arrow{r}{} & M_{i-1} \\
+    \end{tikzcd}
+\]
+
+\subsection{Markgildi}
+Markgildi ríkisins $C$
+
+\section{Rúmfræði}
+Við höfum áhuga á núllstöðum margliða. Við erum með formúlur fyrir sum sértilfelli, til dæmis fyrir annars stigs jöfnur 
+í einni breytu. Þá er sviðið sem við vinnum í tvinntölurnar, sem eru algebrulega lokaðar. Við getum notað núllstöðvar margliða í 
+fleri en einni breytu til að skilgreina alls kyns ferla, svo sem keilusniðin. Núllstöðva mengi margliðunnar 
+$p(\xs) \in \C[\xs]$ er mengið 
+\[
+    \{ (\xs) \in \C^n \mid p(\xs) = 0 \}.
+\]
+
+Við viljum samt ekki binda okkur við tvinntölnurnar þannig við látum $k$ vera eitthvað algebrulega lokað svið,
+svo sem algebrulegu tölurnar, algebruleg lokun $p$-legs sviðs, eða $\overline{\R} = \C$. Til þess að undirstrika 
+rúmfræðilega eiginleika $k^n$ skrifum við það $\A_k^n$ eða $\A$ ef $k$ og víddin eru þekkt.
+
+Tökum eftir því að margliðan $p(\xs)$ er stak í bauginum $k[\xs]$ og hún skilgreinir íðalið $J = (p(\xs))$.
+Ef margliðan er óþættanleg þá skilgreinir hún frumíðal. Látum $V : \P(k[\xs]) 
+\to \P(\A^n_k)$ vera fall sem tekur mengi margliða og skilar sniðmengi allra núllstöðvamengja margliðanna í $J$. 
+Látum að sama skapi $I : \P(\A_k^n) \to \P(k[\xs])$ vera fall sem tekur mengi punkta og skilar öllum
+margliðum sem hafa núllstöð í þessum punktum (það er íðal).
+
+
+Núllstöðusetning Hilberts fjallar einmitt um tengslin þarna á milli. $I(V(J)) = \sqrt{J}$
+
+$V(xy) = V(x) \cup V(y)$. 
+
+$D(f) = \A / V(f)$
+$D(f) = \{ p \in \Spec R \mid f \not\in p \}$
+
+Róf (e. \emph{spectrum}) baugsins $R$ er mengi frumíðala $R$. Við skrifum venjulega róf $R$ sem $\Spec(R)$. 
+\[
+    V(J) = \{ P \in \Spec(R) \mid P \supset J \} = \Spec(R/J).
+\]
+
+$V(J) = V(\Ann(R/J)) = \Supp(R/J)$.
+
+Hvað er $\Spec(k[\xs])$?
+Þar sem $k$ er algebrulega lokaður eru það allar fyrsta stigs margliður í $k[\xs]$. Við höfum 
+einsmótun $ \Spec(k[\xs]) \xrightarrow{\sim} \A_n^k, (x_i - c) \mapsto \pi_i(c) $.
+
+\[
+    V(f) = \{ P \in \Spec(k[\xs]) \mid P \supset (f) \} = \Spec(k[\xs]/(f)).
+\]
+
+$D(I) = \A / V(I) = \Spec(k[\xs]) / \Spec(k[\xs]/I) = \Supp I = \{ P \in \Spec \mid I_P \neq 0 \}$. $I(X)$. $\sqrt{J} = P_1 \cap \dots \cap P_n$.
+
+\subsection{Vildarskemu (e. affine schemes)}
+\[
+    X = \Spec R
+\]
+hér er $R$ baugur fágaðra falla á $X$. (Föll keimlík margliðum.)
+Gildi $r \in R$ í $P \in X$ er $\overline{r} \in K(P) := \Quot R/P = R_P/PR_P$.
+
+\end{document}
