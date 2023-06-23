@@ -3,9 +3,7 @@
 \usepackage[margin=1in]{geometry}
 
 \usepackage[skip=0.1in]{parskip}
-\usepackage[sfdefault]{GoSans}
 \renewcommand{\familydefault}{\sfdefault}
-\usepackage{enumitem}
 
 \usepackage[icelandic]{babel}
  \usepackage[T1]{fontenc}
@@ -17,7 +15,6 @@
 \usepackage{lmodern}
 \usepackage{graphicx}
 \usepackage{xcolor}
-\usepackage{float}
 \usepackage{float}
 \usepackage{mathtools}
 \usepackage{wrapfig}
@@ -43,7 +40,6 @@
 
 \usepackage{csquotes}
 \usepackage[backend=biber, citestyle=alphabetic, style=alphabetic]{biblatex}
-\addbibresource{refs.bib}
 
 \DeclareMathOperator{\atan}{atan}
 \DeclareMathOperator{\Spec}{Spec}
@@ -225,8 +221,10 @@ er þátturinn $Q_i$ einstakt ákvarðaður (hann er alltaf þáttur í öllum
 Baugurinn $R$ er noetherískur þá og því aðeins að allir endanlega spannaðir $R$-mótlar eru noetherískir.
 
 $R$ noetherískur $\then$ Öll íðöl $R$ eru endanlega spönnuð.
-$\then$  $R/I$ er noetherískur
-$\then$  $S^{-1}R$ er noetherískur (sér í lagi $R_P$ og $R_f$, og þ.a.l. $M_P$ og $M_f$).
+\begin{itemize}
+
+    \item $\then$  $R/I$ er noetherískur
+    \item $\then$  $S^{-1}R$ er noetherískur (sér í lagi $R_P$ og $R_f$, og þ.a.l. $M_P$ og $M_f$).
 
 \end{itemize}
 
@@ -326,7 +324,7 @@ fjölskylda staka úr $A$, $\{ a_i \}_N, a_0 = 1$ sem uppfyllir eftirfarandi jö
     b^n a_0 + b^{n-1} a_1 + \cdots + ba_{n-1} + a_n = 0.
 \]
 M.ö.o. er $b$ rót fyrir margliðu (í einni breytu, $x$) með stuðlum úr $A$.
-\begin{itemize}[label=$\iff$]
+\begin{itemize}
 \item $b$ er heilleg yfir $A$.
 \item $A \subseteq A[b] \subseteq B$. Hér er $A[b]$ endanlega spönnuð $A$-algebra sem er einnig endanlega spönnuð sem $A$-mótull (sterkara en að vera bara e.s. $A$-algebra).  
 \item $\exists$ endanleg $A$-algebra $C$: $A \subseteq A[b] \subseteq C \subseteq B$.
@@ -444,20 +442,17 @@ $\Cone f_{i-1} := L_{i-1} \oplus M_{i-2}$
 
 virkinn hagar sér eins og fylkjamargföldun
 \[
-\begin{pmatrix}
-d & 0 \\
-f & -d_m \\
-\end{pmatrix}
-\begin{pmatrix}
-x \\
-y 
-\end{pmatrix}
-=
-\begin{pmatrix}
-dx \\
-fx - dmy
-\end{pmatrix}
-
+    \begin{pmatrix}
+    d & 0 \\
+    f & -d_m \\
+    \end{pmatrix}
+    \begin{pmatrix}
+    x \\ y 
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+    dx \\ fx - dmy
+    \end{pmatrix}
 \]
 
 \subsection{Keðjufléttingur}
